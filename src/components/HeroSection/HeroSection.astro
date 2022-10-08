@@ -1,9 +1,13 @@
 ---
 import { sdk } from "@services/sdk";
+import { marked } from "marked";
 
 const { data } = await sdk.populateHero();
+
+const content = marked.parse(data?.hero?.Description || "");
 ---
 
 <section>
+  <div set:html={content}></div>
   <pre>{JSON.stringify(data, null, 2)}</pre>
 </section>
