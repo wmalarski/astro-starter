@@ -1,6 +1,10 @@
 ---
 import { t } from "i18next";
+import Logo from "./resources/logo.svg";
 ---
 
-<nav class="bg-dark-900">Navigation</nav>
+<nav class="bg-dark-900">
+  <img src={Logo} class="h-8" />
+  Navigation
+</nav>
 <a>{t("navbar.products")}</a>

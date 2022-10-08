@@ -1,0 +1,120 @@
+variables:
+  TAG_LATEST: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_NAME:latest
+  TAG_COMMIT: $CI_REGISTRY_IMAGE/$CI_COMMIT_REF_NAME:$CI_COMMIT_SHORT_SHA
+
+before_script:
+  - docker info
+
+default:
+  image: node:lts
+  tags:
+    - docker
+
+stages:
+  - Install
+  - Lint
+  - Build
+  - Deploy
+  - Storybook
+
+Install:
+  stage: Install
+  script:
+    - yarn config set network-timeout 300000
+    - yarn install --frozen-lockfile --cache-folder .yarn
+  cache:
+    policy: push
+    paths:
+      - node_modules/
+      - .yarn
+  only:
+    - merge_requests
+    - master
+    - integration
+    - development
+
+Lint:
+  stage: Lint
+  dependencies:
+    - Install
+  cache:
+    policy: pull
+    paths:
+      - node_modules/
+      - .yarn
+  before_script:
+    - yarn install --frozen-lockfile --cache-folder .yarn
+  script:
+    - yarn code-check
+  only:
+    - merge_requests
+
+Build:
+  stage: Build
+  dependencies:
+    - Install
+  tags:
+    - docker
+  cache:
+    policy: pull
+    paths:
+      - node_modules/
+      - .yarn
+  before_script:
+    - yarn config set network-timeout 300000
+    - yarn install --frozen-lockfile --cache-folder .yarn
+  script:
+    - yarn build
+  artifacts:
+    paths:
+      - dist
+    expire_in: 1 week
+  only:
+    - development
+
+Development:
+  stage: Deploy
+  artifacts:
+    paths:
+      - dist
+  dependencies:
+    - Build
+  script:
+    - echo 'Deploy dist to integration'
+  only:
+    - development
+
+Integration:
+  stage: Deploy
+  dependencies:
+    - Install
+  cache:
+    policy: pull
+    paths:
+      - node_modules/
+      - .yarn
+  before_script:
+    - yarn install --frozen-lockfile --cache-folder .yarn
+  script:
+    - yarn build
+    - echo 'Deploy dist to integration'
+  only:
+    - integration
+
+Production:
+  stage: Deploy
+  dependencies:
+    - Install
+  cache:
+    policy: pull
+    paths:
+      - node_modules/
+      - .yarn
+  before_script:
+    - yarn install --frozen-lockfile --cache-folder .yarn
+  script:
+    - yarn build
+    - echo 'Deploy dist to production'
+  only:
+    - master
+
