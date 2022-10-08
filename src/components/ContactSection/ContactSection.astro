@@ -1,5 +1,6 @@
 ---
 import { sdk } from "@services/sdk";
+import { t } from "i18next";
 
 const { data } = await sdk.populateContact();
 ---
@@ -7,3 +8,36 @@ const { data } = await sdk.populateContact();
 <section>
   <pre>{JSON.stringify(data, null, 2)}</pre>
 </section>
+
+<form id="contact-form">
+  <input name="email" type="email" />
+  <input name="content" type="text" />
+  <button type="submit">{t("contact.submit")}</button>
+</form>
+
+<div id="success" aria-hidden="true">Success</div>
+
+<script is:inline>
+  const contactForm = document.getElementById("contact-form");
+  const success = document.getElementById("success");
+
+  if (contactForm) {
+    contactForm.onsubmit = (event) => {
+      event.preventDefault();
+      const data = new FormData(event.target);
+
+      console.log(data.get("email"), data.get("content"));
+
+      success.setAttribute("aria-hidden", "false");
+    };
+  }
+</script>
+
+<style>
+  #success {
+    display: none;
+  }
+  #success[aria-hidden="false"] {
+    display: block;
+  }
+</style>
