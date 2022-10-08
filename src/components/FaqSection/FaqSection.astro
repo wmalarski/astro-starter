@@ -1,0 +1,9 @@
+---
+import { sdk } from "@services/sdk";
+
+const { data } = await sdk.faqSection();
+---
+
+<section>
+  <pre>{JSON.stringify(data, null, 2)}</pre>
+</section>

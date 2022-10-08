@@ -1,0 +1,9 @@
+---
+import { sdk } from "@services/sdk";
+
+const { data } = await sdk.populateHero();
+---
+
+<section>
+  <pre>{JSON.stringify(data, null, 2)}</pre>
+</section>

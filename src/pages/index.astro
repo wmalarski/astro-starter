@@ -1,0 +1,27 @@
+---
+import BuyProductSection from "@components/BuyProductSection/BuyProductSection.astro";
+import ContactSection from "@components/ContactSection/ContactSection.astro";
+import FaqSection from "@components/FaqSection/FaqSection.astro";
+import FunctionsSection from "@components/FunctionsSection/FunctionsSection.astro";
+import HeroSection from "@components/HeroSection/HeroSection.astro";
+import Navbar from "@components/Navbar/Navbar.astro";
+import ProductSection from "@components/ProductSection/ProductSection.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Welcome to Astro.">
+  <main>
+    <Navbar />
+    <HeroSection />
+    <ProductSection />
+    <FunctionsSection />
+    <BuyProductSection />
+    <FaqSection />
+    <ContactSection />
+  </main>
+</Layout>
+
+<style>
+  main {
+  }
+</style>

@@ -1,0 +1,14 @@
+query populateProduct {
+  card {
+    title
+    description
+    card {
+      id
+      title
+      description
+      icon {
+        url
+      }
+    }
+  }
+}

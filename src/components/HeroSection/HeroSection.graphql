@@ -1,0 +1,21 @@
+query populateHero {
+  hero {
+    Header
+    Description
+    SecondDescription
+    ButtonText
+    ButtonLink
+    topRight {
+      url
+    }
+    topLeft {
+      url
+    }
+    bottomLeft {
+      url
+    }
+    bottomRight {
+      url
+    }
+  }
+}

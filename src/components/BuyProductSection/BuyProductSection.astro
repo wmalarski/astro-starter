@@ -1,0 +1,9 @@
+---
+import { sdk } from "@services/sdk";
+
+const { data } = await sdk.buyProduct();
+---
+
+<section>
+  <pre>{JSON.stringify(data, null, 2)}</pre>
+</section>

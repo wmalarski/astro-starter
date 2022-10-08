@@ -1,0 +1,19 @@
+query faqSection {
+  faq {
+    Title
+    Description
+
+    AccordionElement {
+      Title
+      Description
+    }
+
+    TextImg {
+      url
+    }
+
+    AccordionImg {
+      url
+    }
+  }
+}

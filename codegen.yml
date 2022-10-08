@@ -1,0 +1,13 @@
+schema: ${GRAPHQL_API_ENDPOINT}
+documents: "./src/**/*.graphql"
+generates:
+  ./src/services/types.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-generic-sdk
+    config:
+      namingConvention:
+        transformUnderscore: true
+      skipTypename: true
+      rawRequest: true

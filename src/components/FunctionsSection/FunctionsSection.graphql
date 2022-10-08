@@ -1,0 +1,15 @@
+query functions {
+  function {
+    Title
+
+    FunctionsList {
+      Number
+      elementTitle
+      elementText
+    }
+
+    Image {
+      url
+    }
+  }
+}

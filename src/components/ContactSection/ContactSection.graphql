@@ -1,0 +1,26 @@
+query populateContact {
+  contact {
+    ButtonLabel
+    Title
+    Description
+    Email
+    Phone
+    Form {
+      label
+      placeholder
+      id
+    }
+  }
+}
+
+mutation createContactForm($contactForm: ContactFormInput!) {
+  createContactForm(input: { data: $contactForm }) {
+    contactForm {
+      Name
+      Phone
+      Email
+      Message
+      PrivacyPolicy
+    }
+  }
+}

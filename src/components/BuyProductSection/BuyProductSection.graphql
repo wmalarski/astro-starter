@@ -1,0 +1,11 @@
+query buyProduct {
+  buyProduct {
+    TitleBlack
+    TitleGreen
+    Text
+    leftButtonText
+    LeftButtonLink
+    rightButtonText
+    RightButtonLink
+  }
+}

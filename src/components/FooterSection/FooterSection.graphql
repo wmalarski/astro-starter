@@ -1,0 +1,17 @@
+query populateFooter {
+  footer {
+    TitleTop
+    Address
+    AddressLink
+    TitleBottom
+    PhoneNumber
+    Social {
+      link
+      name
+      icon {
+        url
+      }
+      id
+    }
+  }
+}
