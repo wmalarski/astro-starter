@@ -15,7 +15,8 @@
     "tsc": "tsc --noEmit",
     "code-check": "yarn lint --max-warnings=0 && yarn tsc",
     "=== CODEGEN ===": "",
-    "codegen": "graphql-codegen --require dotenv/config --config codegen.yml dotenv_config_path=.env"
+    "codegen": "graphql-codegen --require dotenv/config --config codegen.yml dotenv_config_path=.env",
+    "i18next": "astro-i18next generate"
   },
   "dependencies": {
     "@astrojs/partytown": "^1.0.1",
@@ -27,6 +28,7 @@
     "@typescript-eslint/eslint-plugin": "^5.38.1",
     "@typescript-eslint/parser": "^5.38.1",
     "astro": "^1.4.6",
+    "astro-i18next": "^1.0.0-beta.12",
     "astro-seo": "^0.6.0",
     "clsx": "^1.2.1",
     "eslint": "^8.24.0",
@@ -40,6 +42,7 @@
     "eslint-plugin-sort-keys-fix": "^1.1.2",
     "eslint-plugin-tailwindcss": "^3.6.2",
     "graphql": "^16.6.0",
+    "i18next-fs-backend": "^1.1.5",
     "node-fetch": "3.2.10",
     "prettier": "^2.7.1",
     "prettier-plugin-astro": "^0.5.5",
